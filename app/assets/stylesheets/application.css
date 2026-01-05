@@ -13,3 +13,128 @@
  *= require_tree .
  *= require_self
  */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ヘッダー */
+.app-header {
+  background: #1c1e3a;
+  color: #fff;
+  height: 80px;
+  width: 100%;
+}
+
+.app-header__inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header__logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.app-header__right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* ログイン時 */
+.user-menu__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.user-menu__avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ドロップダウン */
+.user-menu__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 122px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  padding: 5px;
+  z-index: 1000;
+}
+
+.user-menu__item {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  color: #222;
+  font-size: 14px;
+}
+
+.user-menu__divider {
+  height: 1px;
+  background: #cfcfcf;
+  margin: 6px 0;
+}
+
+/* メイン */
+.app-main {
+  flex: 1;
+}
+
+/* フッター */
+.app-footer {
+  background: #1c1e3a;
+  color: #fff;
+  width: 100%;
+}
+
+.app-footer__inner {
+  width: 100%;
+  padding: 220px 32px 150px;
+  /* padding: 24px 32px; */
+}
+
+.app-footer__logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.app-footer__copy {
+  font-size: 13px;
+}

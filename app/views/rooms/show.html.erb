@@ -1,0 +1,12 @@
+<h1>施設詳細</h1>
+
+<p><%= link_to "施設一覧へ戻る", rooms_path %></p>
+
+<p>
+  <%= image_tag(@room.image.attached? ? @room.image : "default_room.png", width: 240) %>
+</p>
+
+<h2><%= @room.name %></h2>
+<p><%= @room.description %></p>
+<p>住所：<%= @room.address %></p>
+<p>料金：<%= @room.price %> 円 / 日</p>
