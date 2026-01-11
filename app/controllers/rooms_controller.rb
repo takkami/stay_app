@@ -1,8 +1,13 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index show new create edit update destroy]
-  before_action :set_room, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[own new create edit update destroy]
+  before_action :set_room, only: %i[show]
+  before_action :set_own_room, only: %i[edit update destroy]
 
   def index
+    @rooms = Room.order(created_at: :asc)
+  end
+
+  def own
     @rooms = current_user.rooms.order(created_at: :asc)
   end
 
@@ -18,7 +23,7 @@ class RoomsController < ApplicationController
     @room = current_user.rooms.build(room_params)
 
     if @room.save
-      redirect_to rooms_path, notice: "施設が作成されました"
+      redirect_to room_path(@room), notice: "施設が作成されました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,16 +43,16 @@ class RoomsController < ApplicationController
 
   def destroy
     @room.destroy
-    if @room.destroy
-      redirect_to rooms_path, notice: "施設が削除されました"
-    else
-      redirect_to rooms_path, alert: "施設の削除に失敗しました"
-    end
+    redirect_to own_rooms_path, notice: "施設が削除されました"
   end
 
   private
 
   def set_room
+    @room = Room.find(params[:id])
+  end
+
+  def set_own_room
     @room = current_user.rooms.find(params[:id])
   end
 

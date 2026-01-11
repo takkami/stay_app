@@ -6,7 +6,9 @@
   <div class="room-show__container">
 
     <div class="room-show__top">
-      <%= link_to "← 戻る", rooms_path, class: "room-show__back" %>
+      <%= link_to "← 戻る",
+          (params[:return_to].presence || rooms_path),
+          class: "room-show__back" %>
       <%= link_to "✐ 編集", edit_room_path(@room, return_to: request.fullpath), class: "room-show__edit" %>
     </div>
 
