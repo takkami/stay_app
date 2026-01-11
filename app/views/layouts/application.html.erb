@@ -13,6 +13,7 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -21,12 +22,25 @@
     <div class="app-layout">
       <%= render "shared/header" %>
 
+      <%= yield :sub_header %>
+
       <main class="app-main">
         <%= yield %>
       </main>
 
       <% unless devise_controller? %>
         <%= render "shared/footer" %>
+      <% end %>
+
+      <% if flash.any? %>
+        <div class="flash-toast" role="status" aria-live="polite" aria-atomic="true">
+          <% flash.each do |type, message| %>
+            <% next if message.blank? %>
+            <div class="flash-toast__item flash-toast__item--<%= type %>">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </body>

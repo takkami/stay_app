@@ -1,0 +1,59 @@
+<%= form_with model: @room, class: "room-form" do |f| %>
+  <%= hidden_field_tag :return_to, params[:return_to] %>
+
+  <div class="room-form__card">
+    <div class="room-form__row">
+      <div class="room-form__label">
+        施設名 <span class="room-form__required">*</span>
+      </div>
+      <div class="room-form__control">
+        <%= f.text_field :name, class: "room-form__input", placeholder: "ルーム名を入力" %>
+      </div>
+    </div>
+
+    <div class="room-form__row">
+      <div class="room-form__label">
+        施設詳細 <span class="room-form__required">*</span>
+      </div>
+      <div class="room-form__control">
+        <%= f.text_area :description, class: "room-form__textarea", placeholder: "施設詳細を入力" %>
+      </div>
+    </div>
+
+    <div class="room-form__row">
+      <div class="room-form__label">
+        料金 <span class="room-form__required">*</span>
+      </div>
+      <div class="room-form__control">
+        <%= f.number_field :price, class: "room-form__input", min: 1, placeholder: "1日あたりの料金を入力" %>
+      </div>
+    </div>
+
+    <div class="room-form__row">
+      <div class="room-form__label">
+        住所 <span class="room-form__required">*</span>
+      </div>
+      <div class="room-form__control">
+        <%= f.text_field :address, class: "room-form__input", placeholder: "住所を入力" %>
+      </div>
+    </div>
+
+    <div class="room-form__row">
+      <div class="room-form__label">
+        施設画像
+      </div>
+      <div class="room-form__control">
+        <%= f.file_field :image, class: "room-form__file-input", id: "room_image" %>
+        <label for="room_image" class="room-form__file-button">画像アップロード</label>
+      </div>
+    </div>
+
+    <div class="room-form__actions">
+      <%= f.submit "保存", class: "room-form__submit" %>
+      <%= link_to "キャンセル",
+            (params[:return_to].presence || rooms_path),
+            class: "room-form__cancel" %>
+    </div>
+
+  </div>
+<% end %>

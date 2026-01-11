@@ -1,12 +1,68 @@
-<h1>施設詳細</h1>
+<% content_for :sub_header do %>
+  <%= render "shared/search_bar" %>
+<% end %>
 
-<p><%= link_to "施設一覧へ戻る", rooms_path %></p>
+<section class="room-show">
+  <div class="room-show__container">
 
-<p>
-  <%= image_tag(@room.image.attached? ? @room.image : "default_room.png", width: 240) %>
-</p>
+    <div class="room-show__top">
+      <%= link_to "← 戻る", rooms_path, class: "room-show__back" %>
+      <%= link_to "✐ 編集", edit_room_path(@room, return_to: request.fullpath), class: "room-show__edit" %>
+    </div>
 
-<h2><%= @room.name %></h2>
-<p><%= @room.description %></p>
-<p>住所：<%= @room.address %></p>
-<p>料金：<%= @room.price %> 円 / 日</p>
+    <div class="room-show__content">
+      <div class="room-show__media">
+        <%= image_tag(
+          @room.image.attached? ? @room.image : "default_room.png",
+          class: "room-show__image",
+          alt: @room.name
+        ) %>
+      </div>
+
+      <div class="room-show__card">
+        <div class="room-show__card-head">
+          <div class="room-show__name"><%= @room.name %></div>
+          <div class="room-show__price">
+            <%= number_to_currency(@room.price, unit: "¥", precision: 0, format: "%u%n") %>〜
+          </div>
+        </div>
+        <div class="room-show__address"><%= @room.address %></div>
+        <div class="room-show__meta">
+          <div class="room-show__stars" aria-label="5つ星">
+            <% 5.times do %>
+              <%= image_tag "star-icon.svg", class: "room-show__star", alt: "" %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="room-show__description">
+          <%= simple_format(@room.description.to_s) %>
+        </div>
+
+        <div class="room-show__reserve">
+          <div class="room-show__reserve-grid">
+            <div class="room-show__reserve-field">
+              <div class="room-show__reserve-label">チェックイン</div>
+              <input type="date" class="room-show__reserve-input">
+            </div>
+
+            <div class="room-show__reserve-field">
+              <div class="room-show__reserve-label">チェックアウト</div>
+              <input type="date" class="room-show__reserve-input">
+            </div>
+
+            <div class="room-show__reserve-field">
+              <div class="room-show__reserve-label">人数</div>
+              <div class="room-show__reserve-people">
+                <input type="number" class="room-show__reserve-input" min="1" value="0">
+                <span class="room-show__reserve-unit">人</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="room-show__reserve-btn">予約する</button>
+      </div>
+    </div>
+
+  </div>
+</section>
