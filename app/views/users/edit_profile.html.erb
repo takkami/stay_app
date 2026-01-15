@@ -1,0 +1,49 @@
+<section class="settings">
+  <div class="settings__container">
+    <%= render "settings_header", active_tab: :profile %>
+
+    <div class="settings-card">
+      <div class="settings-card__header">
+        <h2 class="settings-card__heading">プロフィール</h2>
+      </div>
+
+      <%= form_with model: current_user, url: users_profile_update_path, method: :patch, local: true do |f| %>
+
+        <div class="profile-edit">
+          <div class="profile-edit__row">
+            <div class="profile-edit__label">アイコン画像</div>
+            <div class="profile-edit__value">
+              <div class="profile-edit__avatar">
+                <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "default_icon.png", alt: "ユーザーアイコン") %>
+              </div>
+
+              <div class="profile-edit__file-wrap">
+                <%= f.file_field :avatar, class: "profile-edit__file", id: "user_avatar" %>
+                <label for="user_avatar" class="profile-edit__file-button">画像アップロード</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-edit__row">
+            <div class="profile-edit__label">名前</div>
+            <div class="profile-edit__value">
+              <%= f.text_field :name, class: "profile-edit__input", placeholder: "名前を入力" %>
+            </div>
+          </div>
+
+          <div class="profile-edit__row profile-edit__row--top">
+            <div class="profile-edit__label">自己紹介</div>
+            <div class="profile-edit__value">
+              <%= f.text_area :introduction, class: "profile-edit__textarea", placeholder: "自己紹介を入力" %>
+            </div>
+          </div>
+
+          <div class="profile-edit__actions">
+            <%= f.submit "保存", class: "profile-edit__submit" %>
+            <%= link_to "キャンセル", users_profile_path, class: "profile-edit__cancel" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

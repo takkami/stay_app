@@ -1,43 +1,66 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="settings">
+  <div class="settings__container">
+    <%= render "users/settings_header", active_tab: :account %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="settings-card">
+      <div class="settings-card__header">
+        <h2 class="settings-card__heading">アカウント</h2>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "account-edit" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="account-edit__row">
+          <div class="account-edit__label">メールアドレス</div>
+          <div class="account-edit__value">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                  class: "account-edit__input",
+                  placeholder: "メールアドレスを入力してください" %>
+          </div>
+        </div>
+
+        <div class="account-edit__row account-edit__row--help">
+          <div class="account-edit__label">
+            変更後パスワード
+            <div class="account-edit__note">※変更する場合のみ</div>
+          </div>
+          <div class="account-edit__value">
+            <%= f.password_field :password, autocomplete: "new-password",
+                  class: "account-edit__input",
+                  placeholder: "変更後パスワードを入力" %>
+
+            <% if @minimum_password_length %>
+              <div class="account-edit__hint"><%= @minimum_password_length %>文字以上</div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="account-edit__row account-edit__row--help">
+          <div class="account-edit__label">
+            確認用パスワード
+            <div class="account-edit__note">※変更する場合のみ</div>
+          </div>
+          <div class="account-edit__value">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                  class: "account-edit__input",
+                  placeholder: "変更後パスワードを入力" %>
+          </div>
+        </div>
+
+        <div class="account-edit__row">
+          <div class="account-edit__label">現在のパスワード</div>
+          <div class="account-edit__value">
+            <%= f.password_field :current_password, autocomplete: "current-password",
+                  class: "account-edit__input",
+                  placeholder: "現在のパスワードを入力" %>
+          </div>
+        </div>
+
+        <div class="account-edit__actions">
+          <%= f.submit "保存", class: "account-edit__submit" %>
+          <%= link_to "キャンセル", users_account_path, class: "account-edit__cancel" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</section>

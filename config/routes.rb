@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get "/users/account", to: "users#account", as: :users_account
+  get "/users/profile", to: "users#profile", as: :users_profile
+
+  get "/users/profile/edit", to: "users#edit_profile", as: :edit_users_profile
+  patch "/users/profile", to: "users#update_profile", as: :users_profile_update
+
   resources :rooms, only: %i[index show new create edit update destroy] do
     collection do
       get :own

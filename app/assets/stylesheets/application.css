@@ -66,6 +66,24 @@ body {
   position: relative;
 }
 
+.auth-links__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+.auth-links__button {
+  background: #ff6b5a;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 13px;
+  border-radius: 5px;
+}
+
 /* ヘッダー下 検索バー（shared/_search_bar.html.erb） */
 .search-bar {
   background: #d9dde2;
@@ -191,7 +209,7 @@ body {
   font-size: 13px;
 }
 
-/* 施設一覧（rooms/index） */
+/* ユーザー施設一覧（rooms/own） */
 .rooms-index {
   background: #fff;
   margin: 40px 0;
