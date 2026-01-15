@@ -9,7 +9,9 @@
       <%= link_to "← 戻る",
           (params[:return_to].presence || rooms_path),
           class: "room-show__back" %>
-      <%= link_to "✐ 編集", edit_room_path(@room, return_to: request.fullpath), class: "room-show__edit" %>
+      <% if user_signed_in? && @room.user_id == current_user.id %>
+        <%= link_to "✐ 編集", edit_room_path(@room, return_to: request.fullpath), class: "room-show__edit" %>
+      <% end %>
     </div>
 
     <div class="room-show__content">
