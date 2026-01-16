@@ -138,7 +138,7 @@ body {
   font-size: 14px;
 }
 
-/* ログイン時 */
+/* ログイン時ヘッダー */
 .user-menu__button {
   background: transparent;
   border: none;
@@ -159,7 +159,7 @@ body {
   display: block;
 }
 
-/* ドロップダウン */
+/* ヘッダードロップダウン */
 .user-menu__dropdown {
   position: absolute;
   right: 0;
@@ -209,6 +209,123 @@ body {
   font-size: 13px;
 }
 
+/* TOP（home/index） */
+.home-hero__bg {
+  position: relative;
+  width: 100%;
+  height: 750px;
+  overflow: hidden;
+}
+
+.home-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero__overlay {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  padding-top: 80px;
+}
+
+.home-hero__title {
+  color: #fff;
+  font-size: 74px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 0 50px;
+}
+
+.home-hero__search {
+  width: 680px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 3px;
+  padding: 36px;
+}
+
+.home-search {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+}
+
+.home-search__input {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 0 12px;
+  outline: none;
+  font-size: 15px;
+}
+
+.home-search__submit {
+  height: 60px;
+  border: none;
+  border-radius: 8px;
+  background: #ff6b5a;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.home-recommend {
+  background: #fff;
+  padding: 150px 0 230px;
+}
+
+.home-recommend__container {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.home-recommend__title {
+  font-size: 42px;
+  font-weight: 500;
+  margin: 0 0 70px;
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #ff6b5a;
+}
+
+.home-recommend__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.home-area-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+
+.home-area-card__img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+.home-area-card__name {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+}
+
 /* ユーザー施設一覧（rooms/own） */
 .rooms-index {
   background: #fff;
@@ -218,7 +335,6 @@ body {
 .rooms-index__container {
   width: 100%;
   max-width: 1500px;
-  /* min-width: 780px; */
   margin: 0 auto 260px;
   padding: 0 36px;
 }
@@ -239,13 +355,6 @@ body {
   padding: 10px 10px;
   border-bottom: 1px solid #212429;
 }
-
-/* .rooms-table__th--image { width: 200px; }
-.rooms-table__th--name { width: 100px; }
-.rooms-table__th--desc { width: 100px; }
-.rooms-table__th--price { width: 140px; }
-.rooms-table__th--date  { width: 160px; }
-.rooms-table__th--actions { width: 30px; } */
 
 .rooms-table__th--image { width: 30%; }
 .rooms-table__th--name { width: 20%; }
@@ -615,6 +724,42 @@ body {
 }
 
 @media (max-width: 960px) {
+  /* TOP（home/index） */
+  .home-hero__overlay {
+    padding-top: 120px;
+  }
+
+  .home-hero__title {
+    font-size: 44px;
+    margin: 0 0 25px;
+  }
+
+  .home-hero__search {
+    width: 480px;
+    padding: 20px;
+  }
+
+  .home-search {
+    gap: 18px;
+  }
+
+  .home-recommend {
+    padding: 100px 0 200px;
+  }
+
+  .home-recommend__title {
+    font-size: 32px;
+  }
+
+  .home-recommend__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-area-card__img {
+    height: 460px;
+  }
+
+  /* 施設詳細（rooms/show） */
   .room-show__content {
     flex-direction: column;
   }

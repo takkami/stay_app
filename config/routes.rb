@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "home/index"
   devise_for :users
 
   get "/users/account", to: "users#account", as: :users_account
@@ -25,8 +26,6 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "rooms#search"
 
-  # 確認用
-  root "rooms#index"
+  root "home#index"
 end
