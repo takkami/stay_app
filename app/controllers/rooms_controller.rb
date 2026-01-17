@@ -4,7 +4,22 @@ class RoomsController < ApplicationController
   before_action :set_own_room, only: %i[edit update destroy]
 
   def index
-    @rooms = Room.order(created_at: :asc)
+    @rooms = Room.all
+
+    # エリア検索（住所：あいまい検索）
+    if params[:area].present?
+      area = ActiveRecord::Base.sanitize_sql_like(params[:area])
+      @rooms = @rooms.where("address LIKE ?", "%#{area}%")
+    end
+
+    # キーワード検索（施設名 + 施設詳細：あいまい検索）
+    if params[:keyword].present?
+      keyword = ActiveRecord::Base.sanitize_sql_like(params[:keyword])
+      @rooms = @rooms.where("name LIKE ? OR description LIKE ?", "%#{keyword}%", "%#{keyword}%")
+    end
+
+    @rooms = @rooms.order(created_at: :asc)
+    @total_count = @rooms.count
   end
 
   def own

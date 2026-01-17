@@ -326,6 +326,104 @@ body {
   text-shadow: 0 2px 10px rgba(0,0,0,0.55);
 }
 
+/* 施設検索結果（rooms/index） */
+.rooms-list__count {
+  font-size: 19px;
+  color: #111;
+  margin: 18px 0 24px;
+}
+
+.rooms-cards {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.room-card {
+  background: #fff6ee;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.room-card__image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.room-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.room-card__body {
+  padding: 40px 24px;
+}
+
+.room-card__title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.room-card__address {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.room-card__stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.room-card__star {
+  width: 16px;
+  height: 16px;
+}
+
+.room-card__desc {
+  font-size: 16px;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  min-height: 72px;
+}
+
+.room-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff6b5a;
+  margin-bottom: 8px;
+}
+
+.room-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: #ff6b5a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
 /* ユーザー施設一覧（rooms/own） */
 .rooms-index {
   background: #fff;
@@ -596,6 +694,7 @@ body {
   background: #fff5ea;
   border-radius: 3px;
   padding: 50px 26px;
+  width: 780px;
 }
 
 .room-show__card-head {
@@ -608,7 +707,7 @@ body {
 .room-show__name {
   font-size: 28px;
   font-weight: 700;
-  color: #333;
+  color: #666;
 }
 
 .room-show__price {
@@ -621,6 +720,7 @@ body {
 .room-show__address {
   margin-top: 12px;
   font-size: 14px;
+  color: #999;
 }
 
 .room-show__meta {
@@ -688,14 +788,18 @@ body {
 .room-show__reserve-btn {
   width: 100%;
   margin-top: 25px;
-  height: 54px;
+  height: 70px;
   border: none;
   border-radius: 10px;
   background: #ff6b5a;
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 800;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 /* flash表示 */
@@ -759,9 +863,28 @@ body {
     height: 460px;
   }
 
+  /* 施設検索結果（rooms/index） */
+  .rooms-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .room-card__body {
+    padding: 16px;
+  }
+
+  .room-card__footer {
+    display: block;
+  }
+
+  .room-card__btn {
+    width: 100%;
+  }
+
   /* 施設詳細（rooms/show） */
   .room-show__content {
     flex-direction: column;
+    gap: 20px;
   }
 
   .room-show__media {
@@ -772,5 +895,9 @@ body {
 
   .room-show__image {
     max-width: 100%;
+  }
+
+  .room-show__card {
+    width: 100%;
   }
 }

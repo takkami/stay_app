@@ -1,27 +1,21 @@
 <div class="search-bar">
   <div class="search-bar__inner">
-    <form class="search-bar__form" action="#" method="get">
+    <%= form_with url: rooms_path, method: :get, local: true, class: "search-bar__form" do %>
       <div class="search-bar__field search-bar__field--area">
         <span class="search-bar__icon" aria-hidden="true">📍</span>
-        <input
-          type="text"
-          name="area"
-          class="search-bar__input"
-          placeholder="エリア名を入力"
-        >
+        <%= text_field_tag :area, nil,
+          class: "search-bar__input",
+          placeholder: "エリア名を入力" %>
       </div>
 
       <div class="search-bar__field search-bar__field--keyword">
         <span class="search-bar__icon" aria-hidden="true">🔍</span>
-        <input
-          type="text"
-          name="keyword"
-          class="search-bar__input"
-          placeholder="キーワード名を入力"
-        >
+        <%= text_field_tag :keyword, nil,
+          class: "search-bar__input",
+          placeholder: "キーワード名を入力" %>
       </div>
 
-      <button type="submit" class="search-bar__submit">検索</button>
-    </form>
+      <%= submit_tag "検索", class: "search-bar__submit" %>
+    <% end %>
   </div>
 </div>

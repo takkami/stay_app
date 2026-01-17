@@ -64,7 +64,13 @@
             </div>
           </div>
         </div>
-        <button type="button" class="room-show__reserve-btn">予約する</button>
+
+        <% if user_signed_in? %>
+          <button type="button" class="room-show__reserve-btn">予約する</button>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "room-show__reserve-btn" %>
+        <% end %>
+
       </div>
     </div>
 
