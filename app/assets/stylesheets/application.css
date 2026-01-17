@@ -527,7 +527,7 @@ body {
   background: #f3f4f6;
 }
 
-.rooms-table__dropdown-item--disabled {
+.rooms-table__dropdown-item--danger {
   color: red;
   cursor: pointer;
 }

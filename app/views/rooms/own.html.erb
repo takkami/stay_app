@@ -53,7 +53,7 @@
                     <%= link_to "施設を削除",
                           room_path(room, return_to: request.fullpath),
                           data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-                          class: "rooms-table__dropdown-item rooms-table__dropdown-item--disabled" %>
+                          class: "rooms-table__dropdown-item rooms-table__dropdown-item--danger" %>
                   </div>
                 </div>
               </td>

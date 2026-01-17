@@ -38,7 +38,7 @@
                 <%= number_to_currency(room.price, unit: "¥", precision: 0, format: "%u%n") %>〜
               </div>
 
-              <%= link_to "詳細はこちら", room_path(room), class: "room-card__btn" %>
+              <%= link_to "詳細はこちら", room_path(room, return_to: request.fullpath), class: "room-card__btn" %>
             </div>
           </div>
         </div>
