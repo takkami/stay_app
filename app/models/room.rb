@@ -3,8 +3,7 @@ class Room < ApplicationRecord
 
   has_one_attached :image
 
-  # 予約機能作成機能追加まで無効化
-  # has_many :reservations, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true

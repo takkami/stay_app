@@ -43,30 +43,45 @@
           <%= simple_format(@room.description.to_s) %>
         </div>
 
-        <div class="room-show__reserve">
-          <div class="room-show__reserve-grid">
-            <div class="room-show__reserve-field">
-              <div class="room-show__reserve-label">チェックイン</div>
-              <input type="date" class="room-show__reserve-input">
-            </div>
+        <% if user_signed_in? %>
+          <%= form_with url: confirm_reservations_path,
+              method: :post,
+              scope: :reservation,
+              local: true,
+              data: { turbo: false } do |f| %>
+            <%= f.hidden_field :room_id, value: @room.id %>
 
-            <div class="room-show__reserve-field">
-              <div class="room-show__reserve-label">チェックアウト</div>
-              <input type="date" class="room-show__reserve-input">
-            </div>
+            <div class="room-show__reserve">
+              <div class="room-show__reserve-grid">
+                <div class="room-show__reserve-field">
+                  <div class="room-show__reserve-label">チェックイン</div>
+                  <%= f.date_field :check_in,
+                      class: "room-show__reserve-input",
+                      value: params.dig(:reservation, :check_in) %>
+                </div>
 
-            <div class="room-show__reserve-field">
-              <div class="room-show__reserve-label">人数</div>
-              <div class="room-show__reserve-people">
-                <input type="number" class="room-show__reserve-input" min="1" value="0">
-                <span class="room-show__reserve-unit">人</span>
+                <div class="room-show__reserve-field">
+                  <div class="room-show__reserve-label">チェックアウト</div>
+                  <%= f.date_field :check_out,
+                      class: "room-show__reserve-input",
+                      value: params.dig(:reservation, :check_out) %>
+                </div>
+
+                <div class="room-show__reserve-field">
+                  <div class="room-show__reserve-label">人数</div>
+                  <div class="room-show__reserve-people">
+                    <%= f.number_field :people,
+                        class: "room-show__reserve-input",
+                        min: 1,
+                        value: (params.dig(:reservation, :people).presence || 1) %>
+                    <span class="room-show__reserve-unit">人</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <% if user_signed_in? %>
-          <button type="button" class="room-show__reserve-btn">予約する</button>
+            <%= f.submit "予約する", class: "room-show__reserve-btn" %>
+          <% end %>
         <% else %>
           <%= link_to "ログイン", new_user_session_path, class: "room-show__reserve-btn" %>
         <% end %>

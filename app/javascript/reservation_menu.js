@@ -1,11 +1,11 @@
 document.addEventListener("turbo:load", () => {
-  const menus = document.querySelectorAll("[data-room-menu]");
+  const menus = document.querySelectorAll("[data-reservation-menu]");
   if (!menus.length) return;
 
   const closeAll = () => {
     menus.forEach((menu) => {
-      const dropdown = menu.querySelector("[data-room-menu-dropdown]");
-      const button = menu.querySelector("[data-room-menu-button]");
+      const dropdown = menu.querySelector("[data-reservation-menu-dropdown]");
+      const button = menu.querySelector("[data-reservation-menu-button]");
       if (!dropdown || !button) return;
 
       dropdown.hidden = true;
@@ -14,8 +14,8 @@ document.addEventListener("turbo:load", () => {
   };
 
   menus.forEach((menu) => {
-    const button = menu.querySelector("[data-room-menu-button]");
-    const dropdown = menu.querySelector("[data-room-menu-dropdown]");
+    const button = menu.querySelector("[data-reservation-menu-button]");
+    const dropdown = menu.querySelector("[data-reservation-menu-dropdown]");
     if (!button || !dropdown) return;
 
     const open = () => {

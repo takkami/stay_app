@@ -13,6 +13,14 @@ Rails.application.routes.draw do
       get :own
       get :search
     end
+
+    resources :reservations, only: %i[create]
+  end
+
+  resources :reservations, only: %i[index edit update destroy] do
+    collection do
+      match :confirm, via: [:get, :post]
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

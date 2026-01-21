@@ -1,0 +1,60 @@
+<section class="reservation-confirm">
+  <div class="reservation-confirm__container">
+    <h1 class="reservation-confirm__title">予約内容の確認</h1>
+
+    <div class="reservation-confirm__table">
+      <div class="reservation-confirm__row">
+        <div class="reservation-confirm__label">チェックイン</div>
+        <div class="reservation-confirm__value">
+          <%= @reservation.check_in.to_date.to_fs(:date_jp) %>
+        </div>
+      </div>
+
+      <div class="reservation-confirm__row">
+        <div class="reservation-confirm__label">チェックアウト</div>
+        <div class="reservation-confirm__value">
+          <%= @reservation.check_out.to_date.to_fs(:date_jp) %>
+        </div>
+      </div>
+
+      <div class="reservation-confirm__row">
+        <div class="reservation-confirm__label">日数</div>
+        <div class="reservation-confirm__value"><%= @nights %>日</div>
+      </div>
+
+      <div class="reservation-confirm__row">
+        <div class="reservation-confirm__label">人数</div>
+        <div class="reservation-confirm__value"><%= @reservation.people %>人</div>
+      </div>
+
+      <div class="reservation-confirm__row reservation-confirm__row--total">
+        <div class="reservation-confirm__label">お支払い金額</div>
+        <div class="reservation-confirm__value reservation-confirm__value--total">
+          <%= number_to_currency(@total_price, unit: "¥", precision: 0, format: "%u%n") %>
+        </div>
+      </div>
+
+      <p class="reservation-confirm__note">
+        上記内容で正しければ「予約を確定」ボタンを押してください。
+      </p>
+
+      <%= form_with model: [@room, @reservation], url: room_reservations_path(@room), method: :post, local: true do |f| %>
+        <%= f.hidden_field :check_in %>
+        <%= f.hidden_field :check_out %>
+        <%= f.hidden_field :people %>
+
+        <div class="reservation-confirm__actions">
+          <%= f.submit "予約を確定", class: "reservation-confirm__btn reservation-confirm__btn--primary" %>
+
+          <%= link_to "キャンセル",
+              room_path(@room, reservation: {
+                check_in: @reservation.check_in,
+                check_out: @reservation.check_out,
+                people: @reservation.people
+              }),
+              class: "reservation-confirm__btn reservation-confirm__btn--secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

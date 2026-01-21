@@ -1,0 +1,90 @@
+<section class="rooms-index">
+  <div class="rooms-index__container">
+    <header class="rooms-index__header">
+      <h1 class="rooms-index__title">予約済み一覧</h1>
+    </header>
+
+    <div class="rooms-table">
+      <table class="rooms-table__table">
+        <thead class="rooms-table__thead">
+          <tr class="rooms-table__head-row">
+            <th class="rooms-table__th rooms-table__th--image">画像</th>
+            <th class="rooms-table__th rooms-table__th--name">施設名</th>
+            <th class="rooms-table__th rooms-table__th--desc">紹介文</th>
+            <th class="rooms-table__th rooms-table__th--price">合計料金</th>
+            <th class="rooms-table__th rooms-table__th--date">チェックイン</th>
+            <th class="rooms-table__th rooms-table__th--date">チェックアウト</th>
+            <th class="rooms-table__th rooms-table__th--date">予約確定日時</th>
+            <th class="rooms-table__th rooms-table__th--actions"></th>
+          </tr>
+        </thead>
+
+        <tbody class="rooms-table__tbody">
+          <% @reservations.each do |reservation| %>
+            <% room = reservation.room %>
+
+            <tr class="rooms-table__row">
+              <td>
+                <%= link_to room_path(room, return_to: request.fullpath), class: "rooms-table__image-link" do %>
+                  <%= image_tag(
+                        room.image.attached? ? room.image : "default_room.png",
+                        class: "rooms-table__image",
+                        alt: room.name
+                      ) %>
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to room.name, room_path(room, return_to: request.fullpath), class: "rooms-table__name-link" %>
+              </td>
+
+              <td>
+                <%= truncate(room.description.to_s, length: 23) %>
+              </td>
+
+              <td>
+                <%= number_to_currency(reservation.total_price, unit: "¥", precision: 0, format: "%u%n") %>
+              </td>
+
+              <td>
+                <%= reservation.check_in.to_date.to_fs(:date_jp) %>
+              </td>
+
+              <td>
+                <%= reservation.check_out.to_date.to_fs(:date_jp) %>
+              </td>
+
+              <td>
+                <%= reservation.created_at.to_fs(:datetime_jp) %>
+              </td>
+
+              <td class="rooms-table__td rooms-table__td--actions">
+                <div class="rooms-table__menu" data-reservation-menu>
+                  <button
+                    type="button"
+                    class="rooms-table__kebab"
+                    aria-label="メニュー"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-reservation-menu-button>︙</button>
+
+                  <div class="rooms-table__dropdown" data-reservation-menu-dropdown hidden>
+                    <%= link_to "予約を編集",
+                        edit_reservation_path(reservation),
+                        class: "rooms-table__dropdown-item" %>
+
+                    <%= link_to "予約を削除",
+                        reservation_path(reservation),
+                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                        class: "rooms-table__dropdown-item rooms-table__dropdown-item--danger" %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

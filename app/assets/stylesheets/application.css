@@ -458,7 +458,7 @@ body {
 .rooms-table__th--name { width: 20%; }
 .rooms-table__th--desc { width: 20%; }
 .rooms-table__th--price { width: 20%; }
-.rooms-table__th--date  { width: 20%; }
+.rooms-table__th--date  { width: 25%; }
 .rooms-table__th--actions { width: 10%; }
 
 .rooms-table__row td {
@@ -800,6 +800,91 @@ body {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+}
+
+/* 予約確認（reservations/confirm） */
+.reservation-confirm {
+  padding: 40px 16px 180px;
+}
+
+.reservation-confirm__container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.reservation-confirm__title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.reservation-confirm__table {
+  background: #fff;
+  border-radius: 12px;
+}
+
+.reservation-confirm__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.reservation-confirm__row--total {
+  border-bottom: none;
+  padding-top: 18px;
+}
+
+.reservation-confirm__label {
+  font-weight: 700;
+  color: #333;
+}
+
+.reservation-confirm__value {
+  color: #333;
+}
+
+.reservation-confirm__value--total {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.reservation-confirm__note {
+  margin: 18px 0 14px;
+  color: #666;
+  font-size: 16px;
+}
+
+.reservation-confirm__actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.reservation-confirm__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  border-radius: 10px;
+  width: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.reservation-confirm__btn--primary {
+  background: #ff6d4a;
+  color: #fff;
+  border: none;
+}
+
+.reservation-confirm__btn--secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
 }
 
 /* flash表示 */

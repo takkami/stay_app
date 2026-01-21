@@ -1,0 +1,40 @@
+<section class="reservation-confirm">
+  <div class="reservation-confirm__container">
+    <h1 class="reservation-confirm__title">予約内容の編集</h1>
+
+    <%= form_with model: @reservation, url: reservation_path(@reservation), method: :patch, local: true do |f| %>
+      <div class="reservation-confirm__table">
+
+        <div class="reservation-confirm__row">
+          <div class="reservation-confirm__label">チェックイン</div>
+          <div class="reservation-confirm__value">
+            <%= f.date_field :check_in, class: "room-show__reserve-input" %>
+          </div>
+        </div>
+
+        <div class="reservation-confirm__row">
+          <div class="reservation-confirm__label">チェックアウト</div>
+          <div class="reservation-confirm__value">
+            <%= f.date_field :check_out, class: "room-show__reserve-input" %>
+          </div>
+        </div>
+
+        <div class="reservation-confirm__row">
+          <div class="reservation-confirm__label">人数</div>
+          <div class="reservation-confirm__value">
+            <%= f.number_field :people, min: 1, class: "room-show__reserve-input" %>
+          </div>
+        </div>
+
+        <p class="reservation-confirm__note">
+          内容を変更したら「予約を変更」ボタンを押してください。
+        </p>
+
+        <div class="reservation-confirm__actions">
+          <%= f.submit "予約を変更", class: "reservation-confirm__btn reservation-confirm__btn--primary" %>
+          <%= link_to "キャンセル", reservations_path, class: "reservation-confirm__btn reservation-confirm__btn--secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
