@@ -1,0 +1,36 @@
+<section class="settings">
+  <div class="settings__container">
+    <%= render "settings_header", active_tab: :profile %>
+
+    <div class="settings-card">
+      <div class="settings-card__header">
+        <h2 class="settings-card__heading">プロフィール</h2>
+
+        <%= link_to "✐ 編集", edit_users_profile_path, class: "settings-card__edit" %>
+      </div>
+
+      <div class="profile">
+        <div class="profile__row">
+          <div class="profile__label">アイコン画像</div>
+          <div class="profile__value">
+            <div class="profile__avatar">
+              <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "default_icon.png", alt: "ユーザーアイコン") %>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile__row">
+          <div class="profile__label">名前</div>
+          <div class="profile__value"><%= current_user.name %></div>
+        </div>
+
+        <div class="profile__row">
+          <div class="profile__label">自己紹介</div>
+          <div class="profile__value">
+            <%= current_user.introduction.presence || "" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

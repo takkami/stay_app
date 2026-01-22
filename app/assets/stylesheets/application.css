@@ -13,3 +13,1205 @@
  *= require_tree .
  *= require_self
  */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
+/* ヘッダー */
+.app-header {
+  background: #1c1e3a;
+  color: #fff;
+  height: 80px;
+  width: 100%;
+}
+
+.app-header__inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header__logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.app-header__right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.auth-links__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+.auth-links__button {
+  background: #ff6b5a;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 13px;
+  border-radius: 5px;
+}
+
+/* ログイン時ヘッダー */
+.user-menu__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.user-menu__avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ヘッダードロップダウン */
+.user-menu__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 122px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  padding: 5px;
+  z-index: 1000;
+}
+
+.user-menu__item {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  color: #222;
+  font-size: 14px;
+}
+
+.user-menu__divider {
+  height: 1px;
+  background: #cfcfcf;
+  margin: 6px 0;
+}
+
+/* ヘッダー下 検索バー（shared/_search_bar.html.erb） */
+.search-bar {
+  background: #d9dde2;
+  padding: 38px 0;
+}
+
+.search-bar__inner {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.search-bar__form {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+}
+
+.search-bar__field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 14px 18px;
+  min-width: 260px;
+}
+
+.search-bar__icon {
+  opacity: 0.7;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.search-bar__input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.search-bar__submit {
+  height: 48px;
+  padding: 0 22px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  background: #efefef;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* フッター */
+.app-footer {
+  background: #1c1e3a;
+  color: #fff;
+  width: 100%;
+}
+
+.app-footer__inner {
+  width: 100%;
+  padding: 220px 32px 150px;
+}
+
+.app-footer__logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.app-footer__copy {
+  font-size: 13px;
+}
+
+/* TOP（home/index） */
+.home-hero__bg {
+  position: relative;
+  width: 100%;
+  height: 750px;
+  overflow: hidden;
+}
+
+.home-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero__overlay {
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  padding-top: 80px;
+}
+
+.home-hero__title {
+  color: #fff;
+  font-size: 74px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0 0 50px;
+}
+
+.home-hero__search {
+  width: 680px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 3px;
+  padding: 36px;
+}
+
+.home-search {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+}
+
+.home-search__input {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 0 12px;
+  outline: none;
+  font-size: 15px;
+}
+
+.home-search__submit {
+  height: 60px;
+  border: none;
+  border-radius: 8px;
+  background: #ff6b5a;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.home-recommend {
+  background: #fff;
+  padding: 150px 0 230px;
+}
+
+.home-recommend__container {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.home-recommend__title {
+  font-size: 42px;
+  font-weight: 500;
+  margin: 0 0 70px;
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #ff6b5a;
+}
+
+.home-recommend__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.home-area-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+
+.home-area-card__img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+.home-area-card__name {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+}
+
+/* 施設検索結果（rooms/index） */
+.rooms-list__count {
+  font-size: 19px;
+  color: #111;
+  margin: 18px 0 24px;
+}
+
+.rooms-cards {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.room-card {
+  background: #fff6ee;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.room-card__image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.room-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.room-card__body {
+  padding: 40px 24px;
+}
+
+.room-card__title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.room-card__address {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.room-card__stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.room-card__star {
+  width: 16px;
+  height: 16px;
+}
+
+.room-card__desc {
+  font-size: 16px;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  min-height: 72px;
+}
+
+.room-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-card__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff6b5a;
+  margin-bottom: 8px;
+}
+
+.room-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: #ff6b5a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* ユーザー施設一覧（rooms/own） */
+/* ユーザー予約一覧（reservations/index） */
+.rooms-index {
+  background: #fff;
+  margin: 40px 0;
+}
+
+.rooms-index__container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto 260px;
+  padding: 0 36px;
+}
+
+.rooms-index__title {
+  font-size: 25px;
+}
+
+.rooms-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.rooms-table__thead th {
+  text-align: left;
+  font-size: 14px;
+  padding: 10px 10px;
+  border-bottom: 1px solid #212429;
+}
+
+.rooms-table__th--image { width: 30%; }
+.rooms-table__th--name { width: 20%; }
+.rooms-table__th--desc { width: 20%; }
+.rooms-table__th--price { width: 20%; }
+.rooms-table__th--date  { width: 25%; }
+.rooms-table__th--actions { width: 10%; }
+
+.rooms-table__row td {
+  padding: 16px 10px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.rooms-table__image-link {
+  display: inline-block;
+}
+
+.rooms-table__image {
+  width: 120px;
+  height: 72px;
+  object-fit: cover;
+  display: block;
+}
+
+.rooms-table__name-link {
+  text-decoration: none;
+  color: #2e89cb;
+}
+
+.rooms-table__kebab {
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  color: #6b7280;
+}
+
+/* ︙ドロップダウン */
+.rooms-table__menu {
+  position: relative;
+  display: inline-block;
+}
+
+.rooms-table__dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  min-width: 140px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  padding: 6px;
+  z-index: 1000;
+}
+
+.rooms-table__dropdown-item {
+  display: block;
+  padding: 10px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+}
+
+.rooms-table__dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.rooms-table__dropdown-item--danger {
+  color: red;
+  cursor: pointer;
+}
+
+/* 新規登録フォーム（rooms/new） */
+/* 登録施設編集ページ（rooms/edit） */
+.rooms-index--new__container {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 36px 120px;
+}
+
+.room-form {
+  width: 100%;
+}
+
+.room-form__card {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.room-form__row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.room-form__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+}
+
+.room-form__required {
+  color: #e53935;
+}
+
+.room-form__control {
+  width: 100%;
+}
+
+.room-form__input {
+  width: 100%;
+  max-width: 420px;
+  height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.room-form__textarea {
+  width: 100%;
+  max-width: 420px;
+  min-height: 120px;
+  padding: 10px 12px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.room-form__file-input {
+  display: none;
+}
+
+.room-form__file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 70px;
+  border: 1px solid #cfd6e0;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.room-form__actions {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-form__submit {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  background: #ff6b5a;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.room-form__cancel {
+  width: 100%;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid #cfd6e0;
+  background: #fff;
+  color: #222;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* 施設詳細（rooms/show） */
+.room-show {
+  background: #fff;
+  margin: 40px 0;
+}
+
+.room-show__container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto 260px;
+  padding: 0 36px;
+}
+
+.room-show__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.room-show__back,
+.room-show__edit {
+  text-decoration: none;
+  color: #1f6fb2;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.room-show__content {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.room-show__image {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.room-show__card {
+  background: #fff5ea;
+  border-radius: 3px;
+  padding: 50px 26px;
+  width: 780px;
+}
+
+.room-show__card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.room-show__name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #666;
+}
+
+.room-show__price {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ff6b5a;
+  white-space: nowrap;
+}
+
+.room-show__address {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #999;
+}
+
+.room-show__meta {
+  margin-top: 10px;
+}
+
+.room-show__stars {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.room-show__star {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.room-show__description {
+  margin-top: 14px;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.room-show__reserve {
+  margin-top: 18px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 18px;
+}
+
+.room-show__reserve-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+  align-items: end;
+}
+
+.room-show__reserve-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.room-show__reserve-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.room-show__reserve-people {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.room-show__reserve-unit {
+  font-size: 14px;
+  color: #333;
+}
+
+.room-show__reserve-btn {
+  width: 100%;
+  margin-top: 25px;
+  height: 70px;
+  border: none;
+  border-radius: 10px;
+  background: #ff6b5a;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* 予約確認（reservations/confirm） */
+/* 予約変更（reservations/edit） */
+.reservation-confirm {
+  padding: 40px 16px 180px;
+}
+
+.reservation-confirm__container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.reservation-confirm__title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.reservation-confirm__table {
+  background: #fff;
+  border-radius: 12px;
+}
+
+.reservation-confirm__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.reservation-confirm__row--total {
+  border-bottom: none;
+  padding-top: 18px;
+}
+
+.reservation-confirm__label {
+  font-weight: 700;
+  color: #333;
+}
+
+.reservation-confirm__value {
+  color: #333;
+}
+
+.reservation-confirm__value--total {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.reservation-confirm__note {
+  margin: 18px 0 14px;
+  color: #666;
+  font-size: 16px;
+}
+
+.reservation-confirm__actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.reservation-confirm__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  border-radius: 10px;
+  width: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.reservation-confirm__btn--primary {
+  background: #ff6d4a;
+  color: #fff;
+  border: none;
+}
+
+.reservation-confirm__btn--secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* エラーメッセージ */
+.form-error {
+  margin-top: 6px 0 0;
+  font-size: 12px;
+  color: #e53935;
+  font-weight: 700;
+}
+
+/* flash表示 */
+.flash-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.flash-toast__item {
+  min-width: 320px;
+  max-width: min(720px, calc(100vw - 32px));
+  padding: 14px 18px;
+  border-radius: 6px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+
+@media (max-width: 960px) {
+  /* TOP（home/index） */
+  .home-hero__overlay {
+    padding-top: 120px;
+  }
+
+  .home-hero__title {
+    font-size: 44px;
+    margin: 0 0 25px;
+  }
+
+  .home-hero__search {
+    width: 480px;
+    padding: 20px;
+  }
+
+  .home-search {
+    gap: 18px;
+  }
+
+  .home-recommend {
+    padding: 100px 0 200px;
+  }
+
+  .home-recommend__title {
+    font-size: 32px;
+  }
+
+  .home-recommend__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-area-card__img {
+    height: 460px;
+  }
+
+  /* 施設検索結果（rooms/index） */
+  .rooms-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .room-card__body {
+    padding: 16px;
+  }
+
+  .room-card__footer {
+    display: block;
+  }
+
+  .room-card__btn {
+    width: 100%;
+  }
+
+  /* 施設詳細（rooms/show） */
+  .room-show__content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .room-show__media {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .room-show__image {
+    max-width: 100%;
+  }
+
+  .room-show__card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  /* ヘッダー */
+  .app-header {
+    height: 70px;
+  }
+
+  .app-header__logo {
+    font-size: 25px;
+  }
+
+  /* ログイン時ヘッダー */
+  .user-menu__button {
+    font-size: 14px;
+  }
+
+  .user-menu__avatar img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* ヘッダー下 検索バー（shared/_search_bar.html.erb） */
+  .search-bar {
+    background: #d9dde2;
+    padding: 20px 0;
+  }
+
+  .search-bar__inner {
+    padding: 0 25px;
+  }
+
+  .search-bar__form {
+    display: block;
+  }
+
+  .search-bar__submit {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* TOP（home/index） */
+  .home-hero__bg {
+    height: 450px;
+  }
+
+  .home-hero__overlay {
+    padding-top: 60px;
+  }
+
+  .home-hero__title {
+    font-size: 32px;
+  }
+
+  .home-recommend {
+    padding: 80px 0 100px;
+  }
+
+  .home-recommend__title {
+    font-size: 24px;
+    margin: 0 0 60px;
+    padding-bottom: 8px;
+  }
+
+  .home-recommend__grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  /* 施設検索結果（rooms/index） */
+  .rooms-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .room-card__footer {
+    display: block;
+  }
+
+  .room-card__price {
+    font-size: 20px;
+  }
+
+  /* ユーザー施設一覧（rooms/own） */
+  /* ユーザー予約一覧（reservations/index） */
+  .rooms-index__container {
+    margin: 0 auto 130px;
+    padding: 0 16px;
+  }
+
+  .rooms-index__title {
+    font-size: 22px;
+  }
+
+  .rooms-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rooms-table__table {
+    min-width: 900px;
+  }
+
+  /* 施設詳細（rooms/show） */
+  .room-show__container {
+    margin: 0 auto 130px;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* ヘッダー */
+  .app-header {
+    height: 65px;
+  }
+
+  .app-header__inner {
+    padding: 0 12px;
+  }
+
+  .app-header__logo {
+    font-size: 20px;
+  }
+  .auth-links__link {
+    font-size: 10px;
+    margin-right: 10px;
+  }
+
+  .auth-links__button {
+    font-size: 10px;
+  }
+
+  /* ログイン時ヘッダー */
+  .user-menu__button {
+    font-size: 12px;
+  }
+
+  /* TOP（home/index） */
+  .home-hero__title {
+    font-size: 22px;
+  }
+
+  .home-hero__search {
+    width: 350px;
+    padding: 15px;
+  }
+
+  .home-recommend {
+    padding: 80px 0 100px;
+  }
+
+  .home-recommend__container {
+    padding: 0 18px;
+  }
+
+  .home-recommend__title {
+    font-size: 24px;
+    margin: 0 0 60px;
+    padding-bottom: 8px;
+  }
+
+  .home-recommend__grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  /* 新規登録フォーム（rooms/new） */
+  /* 登録施設編集ページ（rooms/edit） */
+  .rooms-index--new__container {
+    padding: 0 16px 60px;
+  }
+
+  .room-form__row {
+    display: block;
+  }
+
+  .room-form__label {
+    margin-bottom: 12px;
+  }
+
+  /* 施設詳細（rooms/show） */
+  .room-show__container {
+    margin: 0 auto 110px;
+  }
+
+  .room-show__back,
+  .room-show__edit {
+    font-size: 16px;
+  }
+
+  .room-show__card {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .room-show__card-head {
+    display: block;
+  }
+
+  .room-show__name {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .room-show__price {
+    font-size: 20px;
+  }
+
+  .room-show__description {
+    font-size: 14px;
+  }
+
+  .room-show__reserve-grid {
+    display: block;
+  }
+
+  .room-show__reserve-input {
+    margin-bottom: 14px;
+  }
+}

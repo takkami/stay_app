@@ -1,0 +1,11 @@
+<h1 class="settings__title">設定</h1>
+
+<div class="settings-tabs">
+  <%= link_to "アカウント",
+      users_account_path,
+      class: "settings-tabs__tab #{active_tab == :account ? 'settings-tabs__tab--active' : ''}" %>
+
+  <%= link_to "プロフィール",
+      users_profile_path,
+      class: "settings-tabs__tab #{active_tab == :profile ? 'settings-tabs__tab--active' : ''}" %>
+</div>

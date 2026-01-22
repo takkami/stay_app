@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  get "home/index"
+  devise_for :users
+
+  get "/users/account", to: "users#account", as: :users_account
+  get "/users/profile", to: "users#profile", as: :users_profile
+
+  get "/users/profile/edit", to: "users#edit_profile", as: :edit_users_profile
+  patch "/users/profile", to: "users#update_profile", as: :users_profile_update
+
+  resources :rooms, only: %i[index show new create edit update destroy] do
+    collection do
+      get :own
+    end
+
+    resources :reservations, only: %i[create]
+  end
+
+  resources :reservations, only: %i[index edit update destroy] do
+    collection do
+      match :confirm, via: [:get, :post]
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,5 +33,6 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+
+  root "home#index"
 end

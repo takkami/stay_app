@@ -1,0 +1,41 @@
+<header class="app-header">
+  <div class="app-header__inner">
+    <%= link_to root_path, class: "app-header__logo" do %>
+      <span class="app-header__logo-text">Potepan Share</span>
+    <% end %>
+
+    <div class="app-header__right">
+      <% if user_signed_in? %>
+        <div class="user-menu" data-user-menu>
+          <button type="button" class="user-menu__button" data-user-menu-button aria-haspopup="true" aria-expanded="false">
+            <span class="user-menu__avatar">
+              <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "default_icon.png", alt: "ユーザーアイコン") %>
+            </span>
+            <span class="user-menu__name"><%= current_user.name %></span>
+            <span class="user-menu__caret">▼</span>
+          </button>
+          <div class="user-menu__dropdown" data-user-menu-dropdown hidden>
+            <%= link_to "施設の新規登録", new_room_path, class: "user-menu__item" %>
+
+            <div class="user-menu__divider"></div>
+
+            <%= link_to "予約済み一覧", reservations_path, class: "user-menu__item" %>
+            <%= link_to "登録済み一覧", own_rooms_path, class: "user-menu__item" %>
+            <%= link_to "アカウント設定", users_account_path, class: "user-menu__item" %>
+
+            <div class="user-menu__divider"></div>
+
+            <%= link_to "ログアウト", destroy_user_session_path,
+                        data: { turbo_method: :delete },
+                        class: "user-menu__item" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="auth-links">
+          <%= link_to "ログイン", new_user_session_path, class: "auth-links__link" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "auth-links__button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>

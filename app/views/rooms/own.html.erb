@@ -1,0 +1,66 @@
+<section class="rooms-index">
+  <div class="rooms-index__container">
+    <header class="rooms-index__header">
+      <h1 class="rooms-index__title">登録済み一覧</h1>
+    </header>
+    <div class="rooms-table">
+      <table class="rooms-table__table">
+        <thead class="rooms-table__thead">
+          <tr class="rooms-table__head-row">
+            <th class="rooms-table__th rooms-table__th--image">画像</th>
+            <th class="rooms-table__th rooms-table__th--name">施設名</th>
+            <th class="rooms-table__th rooms-table__th--desc">紹介文</th>
+            <th class="rooms-table__th rooms-table__th--price">料金</th>
+            <th class="rooms-table__th rooms-table__th--date">作成日</th>
+            <th class="rooms-table__th rooms-table__th--actions"></th>
+          </tr>
+        </thead>
+        <tbody class="rooms-table__tbody">
+          <% @rooms.each do |room| %>
+            <tr class="rooms-table__row">
+              <td class="rooms-table__td rooms-table__td--image">
+                <%= link_to room_path(room, return_to: request.fullpath), class: "rooms-table__image-link" do %>
+                  <%= image_tag(
+                    room.image.attached? ? room.image : "default_room.png",
+                    class: "rooms-table__image",
+                    alt: room.name
+                  ) %>
+                <% end %>
+              </td>
+              <td class="rooms-table__td rooms-table__td--name">
+                <%= link_to room.name, room_path(room, return_to: request.fullpath), class: "rooms-table__name-link" %>
+              </td>
+              <td class="rooms-table__td rooms-table__td--desc">
+                <div class="rooms-table__desc">
+                  <%= truncate(room.description.to_s, length: 30) %>
+                </div>
+              </td>
+              <td class="rooms-table__td rooms-table__td--price">
+                <%= number_to_currency(room.price, unit: "¥", precision: 0, format: "%u%n") %>〜
+              </td>
+              <td class="rooms-table__td rooms-table__td--date">
+                <%= room.created_at.strftime("%Y/%m/%d") %>
+              </td>
+              <td class="rooms-table__td rooms-table__td--actions">
+                <div class="rooms-table__menu" data-room-menu>
+                  <button type="button" class="rooms-table__kebab" aria-label="メニュー" aria-expanded="false" data-room-menu-button>︙</button>
+
+                  <div class="rooms-table__dropdown" data-room-menu-dropdown hidden>
+                    <%= link_to "編集",
+                            edit_room_path(room, return_to: request.fullpath),
+                            class: "rooms-table__dropdown-item" %>
+
+                    <%= link_to "施設を削除",
+                          room_path(room, return_to: request.fullpath),
+                          data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                          class: "rooms-table__dropdown-item rooms-table__dropdown-item--danger" %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

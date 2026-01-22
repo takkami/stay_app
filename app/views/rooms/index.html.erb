@@ -1,0 +1,49 @@
+<% content_for :sub_header do %>
+  <%= render "shared/search_bar" %>
+<% end %>
+
+<section class="rooms-index">
+  <div class="rooms-index__container">
+
+    <header class="rooms-index__header">
+      <p class="rooms-list__count"><%= @rooms.count %> 件が見つかりました。</p>
+    </header>
+
+    <div class="rooms-cards">
+      <% @rooms.each do |room| %>
+        <div class="room-card">
+          <div class="room-card__image">
+            <%= image_tag(
+              room.image.attached? ? room.image : "default_room.png",
+              alt: room.name
+            ) %>
+          </div>
+
+          <div class="room-card__body">
+            <div class="room-card__title"><%= room.name %></div>
+            <div class="room-card__address"><%= room.address %></div>
+
+            <div class="room-card__stars" aria-label="5つ星">
+              <% 5.times do %>
+                <%= image_tag "star-icon.svg", class: "room-card__star", alt: "" %>
+              <% end %>
+            </div>
+
+            <div class="room-card__desc">
+              <%= truncate(room.description.to_s, length: 70) %>
+            </div>
+
+            <div class="room-card__footer">
+              <div class="room-card__price">
+                <%= number_to_currency(room.price, unit: "¥", precision: 0, format: "%u%n") %>〜
+              </div>
+
+              <%= link_to "詳細はこちら", room_path(room, return_to: request.fullpath), class: "room-card__btn" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</section>

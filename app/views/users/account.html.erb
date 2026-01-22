@@ -1,0 +1,25 @@
+<section class="settings">
+  <div class="settings__container">
+    <%= render "settings_header", active_tab: :account %>
+
+    <div class="settings-card">
+      <div class="settings-card__header">
+        <h2 class="settings-card__heading">アカウント</h2>
+
+        <%= link_to "✐ 編集", edit_user_registration_path, class: "settings-card__edit" %>
+      </div>
+
+      <div class="settings-table">
+        <div class="settings-table__row">
+          <div class="settings-table__th">メールアドレス</div>
+          <div class="settings-table__td"><%= current_user.email %></div>
+        </div>
+
+        <div class="settings-table__row">
+          <div class="settings-table__th">パスワード</div>
+          <div class="settings-table__td">*********</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

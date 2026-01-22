@@ -1,0 +1,54 @@
+<section class="home-hero">
+  <div class="home-hero__bg">
+    <%= image_tag "top_hero.jpg", class: "home-hero__img", alt: "TOP画像" %>
+
+    <div class="home-hero__overlay">
+      <h1 class="home-hero__title">
+        Potepan Shareで<br>
+        まだ体験したことのない<br>
+        旅をしよう
+      </h1>
+
+      <div class="home-hero__search">
+        <%= form_with url: rooms_path, method: :get, local: true, class: "home-search" do %>
+
+          <div class="home-search__field">
+            <%= text_field_tag :area, params[:area],
+              placeholder: "エリア名を入力",
+              class: "home-search__input" %>
+          </div>
+
+          <%= submit_tag "検索", class: "home-search__submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-recommend">
+  <div class="home-recommend__container">
+    <h2 class="home-recommend__title">おすすめのエリア</h2>
+
+    <div class="home-recommend__grid">
+      <%= link_to rooms_path(area: "東京"), class: "home-area-card" do %>
+        <%= image_tag "area_tokyo.jpg", class: "home-area-card__img", alt: "東京" %>
+        <div class="home-area-card__name">東京<br>Tokyo</div>
+      <% end %>
+
+      <%= link_to rooms_path(area: "大阪"), class: "home-area-card" do %>
+        <%= image_tag "area_osaka.jpg", class: "home-area-card__img", alt: "大阪" %>
+        <div class="home-area-card__name">大阪<br>Osaka</div>
+      <% end %>
+
+      <%= link_to rooms_path(area: "京都"), class: "home-area-card" do %>
+        <%= image_tag "area_kyoto.jpg", class: "home-area-card__img", alt: "京都" %>
+        <div class="home-area-card__name">京都<br>Kyoto</div>
+      <% end %>
+
+      <%= link_to rooms_path(area: "札幌"), class: "home-area-card" do %>
+        <%= image_tag "area_sapporo.jpg", class: "home-area-card__img", alt: "札幌" %>
+        <div class="home-area-card__name">札幌<br>Sapporo</div>
+      <% end %>
+    </div>
+  </div>
+</section>

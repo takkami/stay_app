@@ -1,0 +1,374 @@
+/* アカウント（users/account） */
+/* プロフィール（users/profile） */
+.settings {
+  background: #fff;
+  padding: 28px 0 200px;
+}
+
+.settings__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.settings__title {
+  font-size: 24px;
+  margin: 5px 0 16px;
+}
+
+.settings-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #d9dde2;
+  background: #fff;
+}
+
+.settings-tabs__tab {
+  text-align: center;
+  padding: 17px 0;
+  text-decoration: none;
+  color: #333;
+  font-weight: 200;
+  border-right: 1px solid #d9dde2;
+}
+
+.settings-tabs__tab:last-child {
+  border-right: none;
+}
+
+.settings-tabs__tab--active {
+  color: #ff6b5a;
+}
+
+.settings-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.settings-card__heading {
+  font-size: 25px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.settings-card__edit {
+  text-decoration: none;
+  color: #1f6fb2;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.settings-table__row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  padding: 16px 0;
+}
+
+.settings-table__th {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.settings-table__td {
+  font-size: 16px;
+  color: #111;
+}
+
+.profile__row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  padding: 16px 0;
+  align-items: center;
+}
+
+.profile__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile__value {
+  font-size: 16px;
+  color: #111;
+}
+
+.profile__avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e7eb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* プロフィール編集（users/profile/edit） */
+.profile-edit__row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  padding: 16px 0;
+  align-items: center;
+}
+
+.profile-edit__row--top {
+  align-items: start;
+}
+
+.profile-edit__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-edit__value {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 16px;
+  color: #111;
+}
+
+.profile-edit__avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e7eb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-edit__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-edit__file {
+  display: none;
+}
+
+.profile-edit__file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 70px;
+  border: 1px solid #cfd6e0;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-edit__input {
+  width: 100%;
+  max-width: 680px;
+  height: 44px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.profile-edit__textarea {
+  width: 100%;
+  max-width: 680px;
+  min-height: 120px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.profile-edit__actions {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.profile-edit__submit {
+  width: 100%;
+  max-width: 720px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background: #ff6b5a;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-edit__cancel {
+  width: 100%;
+  max-width: 720px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #cfd6e0;
+  background: #fff;
+  color: #222;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.profile-edit__error {
+  margin-top: 6px 0 0;
+  font-size: 12px;
+  color: #e53935;
+  font-weight: 700;
+}
+
+/* アカウント編集（devise /users/edit） */
+.account-edit__row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  padding: 16px 0;
+  align-items: center;
+}
+
+.account-edit__row--help {
+  align-items: start;
+}
+
+.account-edit__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.account-edit__note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+.account-edit__value {
+  font-size: 16px;
+  color: #111;
+}
+
+.account-edit__input {
+  width: 100%;
+  max-width: 680px;
+  height: 44px;
+  border: 1px solid #cfd6e0;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.account-edit__hint {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.account-edit__actions {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.account-edit__submit {
+  width: 100%;
+  max-width: 720px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background: #ff6b5a;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.account-edit__cancel {
+  width: 100%;
+  max-width: 720px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #cfd6e0;
+  background: #fff;
+  color: #222;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.account-edit__error {
+  margin-top: 6px 0 0;
+  font-size: 12px;
+  color: #e53935;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  /* プロフィール編集（users/profile/edit） */
+  .profile-edit__row {
+    display: block;
+  }
+
+  .profile-edit__value {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* アカウント（users/account） */
+  /* プロフィール（users/profile） */
+  .settings__container {
+    padding: 0 18px;
+  }
+
+  .settings-card__heading {
+    font-size: 20px;
+  }
+
+  /* アカウント編集（devise /users/edit） */
+  .account-edit__row {
+    display: block;
+  }
+
+  .account-edit__label {
+    margin-bottom: 12px;
+  }
+
+  /* プロフィール編集（users/profile/edit） */
+  .profile-edit__file-button {
+    padding: 0 60px;
+  }
+}
