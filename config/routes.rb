@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :rooms, only: %i[index show new create edit update destroy] do
     collection do
       get :own
-      get :search
     end
 
     resources :reservations, only: %i[create]

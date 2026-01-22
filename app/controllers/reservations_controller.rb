@@ -4,6 +4,11 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[edit update destroy]
 
   def confirm
+    unless params[:reservation].present? && params[:reservation][:room_id].present?
+      redirect_to rooms_path, alert: "予約情報が見つかりません"
+      return
+    end
+
     if request.post?
       @room = Room.find(params[:reservation][:room_id])
       @reservation = @room.reservations.new(reservation_params)
