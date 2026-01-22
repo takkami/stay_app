@@ -23,3 +23,12 @@ ja:
         check_in: チェックイン日
         check_out: チェックアウト日
         people: 人数
+
+  devise:
+    sessions:
+      signed_in: ログインしました
+      signed_out: ログアウトしました
+
+    registrations:
+      signed_up: アカウント登録が完了しました
+      updated: アカウント情報を更新しました
