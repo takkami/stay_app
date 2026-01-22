@@ -48,7 +48,7 @@ class RoomsController < ApplicationController
     end
   end
 
-  # before_action で取得済み
+  # rooms/edit.html.erb を表示する
   def edit
   end
 

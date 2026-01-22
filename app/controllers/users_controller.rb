@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  # users/account.html.erb を表示する
   def account
   end
 
+  # users/profile.html.erb を表示する
   def profile
   end
 
