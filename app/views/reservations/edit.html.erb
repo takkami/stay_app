@@ -9,6 +9,10 @@
           <div class="reservation-confirm__label">チェックイン</div>
           <div class="reservation-confirm__value">
             <%= f.date_field :check_in, class: "room-show__reserve-input" %>
+
+            <% if @reservation.errors[:check_in].any? %>
+              <p class="form-error"><%= @reservation.errors.full_messages_for(:check_in).first %></p>
+            <% end %>
           </div>
         </div>
 
@@ -16,6 +20,10 @@
           <div class="reservation-confirm__label">チェックアウト</div>
           <div class="reservation-confirm__value">
             <%= f.date_field :check_out, class: "room-show__reserve-input" %>
+
+            <% if @reservation.errors[:check_out].any? %>
+              <p class="form-error"><%= @reservation.errors.full_messages_for(:check_out).first %></p>
+            <% end %>
           </div>
         </div>
 
@@ -23,6 +31,10 @@
           <div class="reservation-confirm__label">人数</div>
           <div class="reservation-confirm__value">
             <%= f.number_field :people, min: 1, class: "room-show__reserve-input" %>
+
+            <% if @reservation.errors[:people].any? %>
+              <p class="form-error"><%= @reservation.errors.full_messages_for(:people).first %></p>
+            <% end %>
           </div>
         </div>
 

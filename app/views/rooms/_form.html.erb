@@ -8,6 +8,10 @@
       </div>
       <div class="room-form__control">
         <%= f.text_field :name, class: "room-form__input", placeholder: "ルーム名を入力" %>
+
+        <% if f.object.errors[:name].present? %>
+          <div class="form-error"><%= f.object.errors.full_messages_for(:name).first %></div>
+        <% end %>
       </div>
     </div>
 
@@ -17,6 +21,10 @@
       </div>
       <div class="room-form__control">
         <%= f.text_area :description, class: "room-form__textarea", placeholder: "施設詳細を入力" %>
+
+        <% if f.object.errors[:description].present? %>
+          <div class="form-error"><%= f.object.errors.full_messages_for(:description).first %></div>
+        <% end %>
       </div>
     </div>
 
@@ -26,6 +34,10 @@
       </div>
       <div class="room-form__control">
         <%= f.number_field :price, class: "room-form__input", min: 1, placeholder: "1日あたりの料金を入力" %>
+
+        <% if f.object.errors[:price].present? %>
+          <div class="form-error"><%= f.object.errors.full_messages_for(:price).first %></div>
+        <% end %>
       </div>
     </div>
 
@@ -35,6 +47,10 @@
       </div>
       <div class="room-form__control">
         <%= f.text_field :address, class: "room-form__input", placeholder: "住所を入力" %>
+
+        <% if f.object.errors[:address].present? %>
+          <div class="form-error"><%= f.object.errors.full_messages_for(:address).first %></div>
+        <% end %>
       </div>
     </div>
 

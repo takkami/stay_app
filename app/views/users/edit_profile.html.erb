@@ -28,6 +28,12 @@
             <div class="profile-edit__label">名前</div>
             <div class="profile-edit__value">
               <%= f.text_field :name, class: "profile-edit__input", placeholder: "名前を入力" %>
+
+              <% if f.object.errors[:name].any? %>
+                <div class="profile-edit__error">
+                  <%= f.object.errors.full_messages_for(:name).first %>
+                </div>
+              <% end %>
             </div>
           </div>
 

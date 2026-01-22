@@ -15,8 +15,8 @@ class ReservationsController < ApplicationController
         )
       end
 
-      flash[:alert] = @reservation.errors.full_messages.join(" / ")
-      return redirect_to room_path(@room)
+      render "rooms/show", status: :unprocessable_entity
+      return
     end
 
     @room = Room.find(params[:reservation][:room_id])
@@ -62,7 +62,6 @@ class ReservationsController < ApplicationController
 
       redirect_to reservations_path, notice: "予約内容を変更しました"
     else
-      flash.now[:alert] = @reservation.errors.full_messages.join(" / ")
       render :edit, status: :unprocessable_entity
     end
   end

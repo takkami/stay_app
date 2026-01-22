@@ -26,8 +26,12 @@ class RoomsController < ApplicationController
     @rooms = current_user.rooms.order(created_at: :asc)
   end
 
-  # before_action で取得済み
   def show
+    @reservation = Reservation.new
+
+    if params[:reservation].present?
+      @reservation.assign_attributes(reservation_params_for_show)
+    end
   end
 
   def new
@@ -73,5 +77,9 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name, :description, :price, :address, :image)
+  end
+
+  def reservation_params_for_show
+    params.require(:reservation).permit(:check_in, :check_out, :people)
   end
 end

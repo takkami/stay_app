@@ -8,7 +8,6 @@
       </div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "account-edit" }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="account-edit__row">
           <div class="account-edit__label">メールアドレス</div>
@@ -16,6 +15,12 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email",
                   class: "account-edit__input",
                   placeholder: "メールアドレスを入力してください" %>
+
+            <% if resource.errors[:email].any? %>
+              <div class="account-edit__error">
+                <%= resource.errors.full_messages_for(:email).first %>
+              </div>
+            <% end %>
           </div>
         </div>
 
@@ -32,6 +37,12 @@
             <% if @minimum_password_length %>
               <div class="account-edit__hint"><%= @minimum_password_length %>文字以上</div>
             <% end %>
+
+            <% if resource.errors[:password].any? %>
+              <div class="account-edit__error">
+                <%= resource.errors.full_messages_for(:password).first %>
+              </div>
+            <% end %>
           </div>
         </div>
 
@@ -44,6 +55,12 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password",
                   class: "account-edit__input",
                   placeholder: "変更後パスワードを入力" %>
+
+            <% if resource.errors[:password_confirmation].any? %>
+              <div class="account-edit__error">
+                <%= resource.errors.full_messages_for(:password_confirmation).first %>
+              </div>
+            <% end %>
           </div>
         </div>
 
@@ -53,6 +70,12 @@
             <%= f.password_field :current_password, autocomplete: "current-password",
                   class: "account-edit__input",
                   placeholder: "現在のパスワードを入力" %>
+
+            <% if resource.errors[:current_password].any? %>
+              <div class="account-edit__error">
+                <%= resource.errors.full_messages_for(:current_password).first %>
+              </div>
+            <% end %>
           </div>
         </div>
 

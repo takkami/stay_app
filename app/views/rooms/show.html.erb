@@ -44,27 +44,36 @@
         </div>
 
         <% if user_signed_in? %>
-          <%= form_with url: confirm_reservations_path,
+          <%= form_with model: @reservation,
+              url: confirm_reservations_path,
               method: :post,
-              scope: :reservation,
               local: true,
               data: { turbo: false } do |f| %>
+
             <%= f.hidden_field :room_id, value: @room.id %>
 
             <div class="room-show__reserve">
               <div class="room-show__reserve-grid">
                 <div class="room-show__reserve-field">
                   <div class="room-show__reserve-label">チェックイン</div>
-                  <%= f.date_field :check_in,
-                      class: "room-show__reserve-input",
-                      value: params.dig(:reservation, :check_in) %>
+                  <%= f.date_field :check_in, class: "room-show__reserve-input" %>
+
+                  <% if @reservation.errors[:check_in].any? %>
+                    <p class="form-error">
+                      <%= @reservation.errors.full_messages_for(:check_in).first %>
+                    </p>
+                  <% end %>
                 </div>
 
                 <div class="room-show__reserve-field">
                   <div class="room-show__reserve-label">チェックアウト</div>
-                  <%= f.date_field :check_out,
-                      class: "room-show__reserve-input",
-                      value: params.dig(:reservation, :check_out) %>
+                  <%= f.date_field :check_out, class: "room-show__reserve-input" %>
+
+                  <% if @reservation.errors[:check_out].any? %>
+                    <p class="form-error">
+                      <%= @reservation.errors.full_messages_for(:check_out).first %>
+                    </p>
+                  <% end %>
                 </div>
 
                 <div class="room-show__reserve-field">
