@@ -1,6 +1,6 @@
 <section class="reservation-confirm">
   <div class="reservation-confirm__container">
-    <h1 class="reservation-confirm__title">予約内容の編集</h1>
+    <h1 class="reservation-confirm__title">予約内容の変更</h1>
 
     <%= form_with model: @reservation, url: reservation_path(@reservation), method: :patch, local: true do |f| %>
       <div class="reservation-confirm__table">

@@ -60,7 +60,7 @@ class ReservationsController < ApplicationController
       nights = @reservation.nights
       @reservation.update!(total_price: calculate_total_price(@reservation.room, nights, @reservation.people))
 
-      redirect_to reservations_path, notice: "予約を変更しました"
+      redirect_to reservations_path, notice: "予約内容を変更しました"
     else
       flash.now[:alert] = @reservation.errors.full_messages.join(" / ")
       render :edit, status: :unprocessable_entity
